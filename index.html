@@ -6,8 +6,9 @@
 </head>
 <body>
 <div class="header">
-	<input type="text" id="new" placeholder="Add new todo...">
-	<span onclick="addNew()" class="addBtn">ADD</span>
+	<!-- <input type="text" class="linput" id="new" placeholder="Add new todo...">
+	<span onclick="addNew()" class="addBtn">ADD</span> -->
+	<input type="text" id="filterBar" class="filter" onkeyup="filterList()">
 </div>
 <ul id="uList">
 	<li>Create a simple list</li>
@@ -15,6 +16,18 @@
 	<li>Move add button to bottom</li>
 	<li>Add advanced add button to allow adding other properties (state, date, etc)</li>
 </ul>
+<button onclick="showAddNew()">Click me!
+<!--   <span class="popuptext" id="addPopup">Popup text...</span> -->
+  
+</button>
+
+<table id="newTable">
+  <tr><td><input type="text" id="todo" placeholder="todo"></td></tr>
+  <tr><td><input type="text" id="state" placeholder="state"></td></tr>
+  <tr><td><input type="text" id="rdate" placeholder="date"></td></tr>
+  <tr><td><button onclick="parseForm()">submit</button></td></tr>
+</table>
+
 <script type="text/javascript" src="list.js"></script>
 </body>
 </html>

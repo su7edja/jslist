@@ -84,13 +84,23 @@ ul li.strike::before {
     clear: both;
 }
 
-/* Style the input */
-input {
+/* Style the filter */
+input.filter{
     border: none;
-    width: 75%;
+    width: 100%;
     padding: 10px;
     float: left;
     font-size: 16px;
+}
+
+/* Style the input */
+table{
+    border: none;
+    width: 20%;
+    padding: 10px;
+    float: right;
+    font-size: 16px;
+    /*display: none;*/
 }
 
 /* Style the "Add" button */
