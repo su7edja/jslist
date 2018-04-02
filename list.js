@@ -34,11 +34,22 @@ function appendToList(item) {
 function showAddNew() {
 	console.log("showAddNew");
 	var addNewTable = document.getElementById("newTable");
-	if (addNewTable.style.display == "none") {
-		addNewTable.style.display = "";
-	}
-	else {
-		addNewTable.style.display = "none";
+	addNewTable.classList.toggle("hide");
+	var addButton = document.getElementById("addBtn");
+	addButton.classList.toggle("hide");
+}
+
+function cancelAdd() {
+	console.log("cancelAdd");
+	var addButton = document.getElementById("addBtn");
+	addButton.classList.toggle("hide");
+	var addNewTable = document.getElementById("newTable");
+	addNewTable.classList.toggle("hide");
+}
+
+function clearValues(idList) {
+	for (var i = 0; i < idList.length; i++) {
+		document.getElementById(idList[i]).value = "";
 	}
 }
 
@@ -47,9 +58,10 @@ function parseForm() {
 	var todo = document.getElementById("todo").value || "";
 	var state = document.getElementById("state").value;
 	var rdate = document.getElementById("rdate").value;
-	console.log(todo + ", " + state + ", " + rdate);
 
 	appendToList(todo);
+
+	clearValues(["todo", "state", "rdate"]);
 }
 
 function filterList() {

@@ -16,16 +16,16 @@
 	<li>Move add button to bottom</li>
 	<li>Add advanced add button to allow adding other properties (state, date, etc)</li>
 </ul>
-<button onclick="showAddNew()">Click me!
-<!--   <span class="popuptext" id="addPopup">Popup text...</span> -->
-  
-</button>
+<button onclick="showAddNew()" id="addBtn" class="addBtn">+</button>
 
-<table id="newTable">
+<table id="newTable" class="hide">
   <tr><td><input type="text" id="todo" placeholder="todo"></td></tr>
   <tr><td><input type="text" id="state" placeholder="state"></td></tr>
   <tr><td><input type="text" id="rdate" placeholder="date"></td></tr>
-  <tr><td><button onclick="parseForm()">submit</button></td></tr>
+  <tr>
+  	<td><button onclick="cancelAdd()">cancel</button></td>
+  	<td><button onclick="parseForm()">submit</button></td>
+  </tr>
 </table>
 
 <script type="text/javascript" src="list.js"></script>
