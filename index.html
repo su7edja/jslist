@@ -10,21 +10,49 @@
 	<span onclick="addNew()" class="addBtn">ADD</span> -->
 	<input type="text" id="filterBar" class="filter" onkeyup="filterList()">
 </div>
-<ul id="uList">
-	<li>Create a simple list</li>
-	<li>Add search capability</li>
-	<li>Move add button to bottom</li>
-	<li>Add advanced add button to allow adding other properties (state, date, etc)</li>
-</ul>
+
+<table id="listTable" class="listTable">
+  <tr>
+    <th>Race</th>
+    <th>State</th>
+    <th>Date</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td style="text-align:left">Fun Race</td>
+    <td>CA</td>
+    <td>12/21/2018</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="text-align:left">Super Fun Race</td>
+    <td>MX</td>
+    <td>01/31/2019</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="text-align:left">Crazy Race</td>
+    <td>NY</td>
+    <td>05/15/2020</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="text-align:left">Peanuts and Chocolate</td>
+    <td>MA</td>
+    <td>09/12/2020</td>
+    <td></td>
+  </tr>
+</table>
+
 <button onclick="showAddNew()" id="addBtn" class="addBtn">+</button>
 
-<table id="newTable" class="hide">
-  <tr><td><input type="text" id="todo" placeholder="todo"></td></tr>
+<table id="newTable" class="addNew hide">
+  <tr><td><input type="text" id="race" placeholder="race"></td></tr>
   <tr><td><input type="text" id="state" placeholder="state"></td></tr>
   <tr><td><input type="text" id="rdate" placeholder="date"></td></tr>
   <tr>
-  	<td><button onclick="cancelAdd()">cancel</button></td>
-  	<td><button onclick="parseForm()">submit</button></td>
+    <td><button onclick="cancelAdd()">cancel</button></td>
+    <td><button onclick="parseForm()">submit</button></td>
   </tr>
 </table>
 
