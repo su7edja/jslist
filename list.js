@@ -1,86 +1,120 @@
 function addXButton(e) {
-	console.log("remove");
-	var xButton = document.createElement("span");
+	console.log("remove2");
+	var tdNode = e.children[3];
 	var xButtonValue = document.createTextNode("\u00D7");
-	xButton.appendChild(xButtonValue);
-	xButton.addEventListener(
+	tdNode.addEventListener(
 		"click",
 	 	function (ev) {
 	 		console.log(ev.target.parentElement.tagName);
-	 		// ev.target.parentElement.style.display = "none";
-	 		var ul = ev.target.parentElement.parentElement;
-	 		var li = ev.target.parentElement;
-	 		ul.removeChild(li);
+	 		var parent = ev.target.parentElement.parentElement;
+	 		var row = ev.target.parentElement;
+	 		parent.removeChild(row);
 	 	},
 	 	false);
-	xButton.classList.add("close");
-	e.appendChild(xButton);
+	tdNode.appendChild(xButtonValue);
 }
 
-function appendToList(item) {
-	var newLi = document.createElement("li");
-	var livalue = document.createTextNode(item);
-	newLi.appendChild(livalue);
-	var l = document.getElementById("uList");
-	if (item == "") {
+
+function appendToTable(itemList) {
+	var race = itemList[0];
+	var state = itemList[1];
+	var rdate = itemList[2];
+	if (itemList[0] == "") {
 		alert ("Put something, yo!");
 	} else {
+
+		var newRow = document.createElement("tr");
+		for(i=0; i<3; i++) {
+			var newTd = document.createElement("td");
+			if (i == 0) {
+				// Adding greyed out
+				newTd.style.textAlign = "left";
+				newTd.addEventListener(
+					"click",
+					function (ev){
+						if(ev.target.tagName == "TD"){
+						ev.target.parentElement.classList.toggle("done");
+					}
+				},
+				false);
+			}
+			var itemValue = document.createTextNode(itemList[i]);
+			newTd.appendChild(itemValue);
+			newRow.appendChild(newTd);
+		}
+		var newTd = document.createElement("td");
+		newRow.appendChild(newTd);
+
+		var listTable = document.getElementById("listTable");
 		// Add cross button to remove from list
-		addXButton(newLi);
-		l.appendChild(newLi);
+		addXButton(newRow);
+		listTable.appendChild(newRow);
 	}
 }
 
 function showAddNew() {
 	console.log("showAddNew");
 	var addNewTable = document.getElementById("newTable");
-	if (addNewTable.style.display == "none") {
-		addNewTable.style.display = "";
-	}
-	else {
-		addNewTable.style.display = "none";
+	addNewTable.classList.toggle("hide");
+	var addButton = document.getElementById("addBtn");
+	addButton.classList.toggle("hide");
+}
+
+function cancelAdd() {
+	console.log("cancelAdd");
+	var addButton = document.getElementById("addBtn");
+	addButton.classList.toggle("hide");
+	var addNewTable = document.getElementById("newTable");
+	addNewTable.classList.toggle("hide");
+}
+
+function clearValues(idList) {
+	for (var i = 0; i < idList.length; i++) {
+		document.getElementById(idList[i]).value = "";
 	}
 }
 
 function parseForm() {
 	console.log("parseForm");
-	var todo = document.getElementById("todo").value || "";
-	var state = document.getElementById("state").value;
-	var rdate = document.getElementById("rdate").value;
-	console.log(todo + ", " + state + ", " + rdate);
+	var race = document.getElementById("race").value || "";
+	var state = document.getElementById("state").value  || "";
+	var rdate = document.getElementById("rdate").value || "";
 
-	appendToList(todo);
+	appendToTable([race, state, rdate]);
+
+	clearValues(["race", "state", "rdate"]);
 }
 
 function filterList() {
 	var filter = document.getElementById('filterBar').value.toLowerCase();
 	console.log("filterList: " + filter);
-	var lis = document.getElementById("uList").getElementsByTagName("li");
-	for (var i = 0; i < lis.length; i++) {
-		console.log(lis[i].innerText.toLowerCase().slice(0,-1));
-		if (lis[i].innerText.toLowerCase().slice(0,-1).indexOf(filter) > -1) {
-			lis[i].style.display = "";
+	var tds = document.getElementById("listTable").getElementsByTagName("td");
+	for (var i = 0; i < tds.length; i+=4) {
+		console.log(tds[i].innerText.toLowerCase());
+		if (tds[i].innerText.toLowerCase().indexOf(filter) > -1) {
+			tds[i].parentElement.style.display = "";
 		}
 		else {
-			lis[i].style.display = "none";
+			tds[i].parentElement.style.display = "none";
 		}
 	}
 }
 
-console.log("strike");
-// Get ul element, attach eventListener for every li in it
-var l = document.getElementById("uList");
-l.addEventListener(
+
+var listTable = document.getElementById("listTable");
+var rows = listTable.rows;
+for (var i=1; i< rows.length; i++) {
+	addXButton(rows[i]);
+
+	console.log("Greying out");
+	var raceName = rows[i].children[0];
+	raceName.addEventListener(
 	"click",
 	function (ev){
-		if(ev.target.tagName == "LI"){
-			ev.target.classList.toggle("strike");
+		if(ev.target.tagName == "TD"){
+			ev.target.parentElement.classList.toggle("done");
 		}
 	},
 	false);
-
-var items = l.getElementsByTagName("li");
-for (var i = 0; i < items.length; ++i) {
-  addXButton(items[i]);
-}	
+}
 
