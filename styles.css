@@ -88,6 +88,7 @@ table.addNew{
 /*    position: absolute;
     bottom: 0;
     right: 0;*/
+
 }
 
 .hide {
@@ -97,3 +98,7 @@ table.addNew{
 tr.done {
     color: lightgrey;
 }
+
+/*.addBtn:hover {
+    background-color: #bbb;
+}*/

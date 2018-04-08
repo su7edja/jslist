@@ -76,6 +76,7 @@ function clearValues(idList) {
 
 function parseForm() {
 	console.log("parseForm");
+
 	var race = document.getElementById("race").value || "";
 	var state = document.getElementById("state").value  || "";
 	var rdate = document.getElementById("rdate").value || "";
