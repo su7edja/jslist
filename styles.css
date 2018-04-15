@@ -95,6 +95,10 @@ table.addNew{
     display: none;
 }
 
+.is-hidden {
+    display: none;
+}
+
 tr.done {
     color: lightgrey;
 }
