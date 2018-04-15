@@ -1,0 +1,5 @@
+// shouldn't be checking in node modules according to https://devcenter.heroku.com/articles/deploying-nodejs
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env

@@ -4,10 +4,12 @@
 var http = require('http');
 var fs = require("fs");
 
+// process.env.PORT lets the port be set by Heroku
+var port = process.env.PORT || 3000;
+
 // This is so that node_modules is included
 // var express = require('express');
 // var app = express();
-
 // app.use('/static', express.static('public'));
 
 http.createServer(function(request, response) {
@@ -16,8 +18,9 @@ http.createServer(function(request, response) {
 		sendFileContent(response, "index.html", "text/html");
 	}
 	else if(request.url === "/"){
-		response.writeHead(200, {'Content-Type': 'text/html'});
-		response.write('<b>Hey there!</b><br /><br />This is the default response. Requested URL is: ' + request.url);
+		sendFileContent(response, "index.html", "text/html");
+		// response.writeHead(200, {'Content-Type': 'text/html'});
+		// response.write('<b>Hey there!</b><br /><br />This is the default response. Requested URL is: ' + request.url);
 	}
 	else if(/\/[a-zA-Z0-9\/_]*.js$/.test(request.url.toString())){
 		sendFileContent(response, request.url.toString().substring(1), "text/javascript");
@@ -30,7 +33,7 @@ http.createServer(function(request, response) {
 		console.log("the string: " + request.url.toString().substring(1));
 		response.end();
 	}
-}).listen(3000);
+}).listen(port);
 
 function sendFileContent(response, fileName, contentType){
 	fs.readFile(fileName, function(err, data){

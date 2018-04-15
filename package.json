@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/su7edja/jslist/issues"
   },
-  "homepage": "https://github.com/su7edja/jslist#readme"
+  "homepage": "https://github.com/su7edja/jslist#readme",
+  "engines": {
+    "node": "8.9.1"
+  }
 }
