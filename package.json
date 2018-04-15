@@ -1,0 +1,24 @@
+{
+  "name": "jslist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "list.js",
+  "dependencies": {
+    "pikaday": "^1.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/su7edja/jslist.git"
+  },
+  "author": "Alex Sutedja",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/su7edja/jslist/issues"
+  },
+  "homepage": "https://github.com/su7edja/jslist#readme"
+}
